@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="style.css">
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5P3P3BB4VX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VPB516E512"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-5P3P3BB4VX');
+      gtag('config', 'G-VPB516E512');
     </script>
 </head>
 <body>
@@ -33,7 +33,7 @@
         <section id="contact">
             <h2>Contact Me</h2>
             <p>You can reach me by email at:</p>
-            <p><a href="mailto:marcjwilliams1@gmail.com">marcjwilliams1@gmail.com</a></p>
+            <p><span id="email-link-placeholder"><em>Email address hidden to prevent spam (requires JavaScript).</em></span></p>
         </section>
     </main>
     <footer>
@@ -43,5 +43,25 @@
             <a href="https://bsky.app/profile/marcjwilliams.bsky.social" target="_blank">BlueSky</a>
         </p>
     </footer>
+    <script>
+        (function() {
+            var user = 'william1';
+            var domain = 'mskcc.org';
+            var emailAddress = user + '@' + domain;
+            var mailtoLink = 'mailto:' + emailAddress;
+            
+            var linkElement = document.createElement('a');
+            linkElement.setAttribute('href', mailtoLink);
+            linkElement.textContent = emailAddress;
+            
+            var placeholder = document.getElementById('email-link-placeholder');
+            if (placeholder && placeholder.parentNode) { // Ensure placeholder and its parent exist
+                placeholder.parentNode.replaceChild(linkElement, placeholder);
+            } else {
+                // Fallback if placeholder or its parent not found
+                console.error('Email placeholder or its parent could not be found.');
+            }
+        })();
+    </script>
 </body>
 </html> 
