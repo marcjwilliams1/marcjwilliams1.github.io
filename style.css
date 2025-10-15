@@ -3,35 +3,71 @@
     box-sizing: border-box;
 }
 
+/* Custom selection color */
+::selection {
+    background-color: #5B6F8C;
+    color: #fff;
+}
+
+::-moz-selection {
+    background-color: #5B6F8C;
+    color: #fff;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     line-height: 1.7;
     margin: 0;
     padding: 0;
     background-color: #fafafa;
-    color: #1a1a1a;
+    color: #2d2d2d;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-size: 16px;
+    font-size: 17px;
+    font-weight: 300;
+}
+
+/* Smooth fade-in on page load */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+main {
+    animation: fadeIn 0.6s ease-out;
 }
 
 .site-title {
-    font-size: 2.5em;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 24px;
+    font-size: 2.369em;
+    font-weight: 500;
+    color: #2d2d2d;
+    margin-bottom: 32px;
     text-align: center;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
 }
 
 header {
-    background-color: #fff;
-    padding: 40px 0 30px 0;
-    border-bottom: 1px solid #f0f0f0;
+    background-color: transparent;
+    padding: 48px 0 40px 0;
+    border-bottom: 1px solid #e8e8e8;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* Reduce top margin for content pages (non-home) */
+#research,
+#software,
+#cv,
+#contact {
+    margin-top: -48px;
 }
 
 nav ul {
@@ -56,69 +92,120 @@ nav a {
     font-weight: 400;
     transition: color 0.2s ease;
     position: relative;
+    padding-bottom: 4px;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background-color: #5B6F8C;
+    transition: width 0.3s ease, left 0.3s ease;
 }
 
 nav a:hover {
-    color: #1a1a1a;
+    color: #2d2d2d;
+}
+
+nav a:hover::after {
+    width: 100%;
+    left: 0;
 }
 
 nav a.active {
-    color: #1a1a1a;
+    color: #2d2d2d;
     font-weight: 500;
+}
+
+nav a.active::after {
+    width: 100%;
+    left: 0;
+    background-color: #5B6F8C;
 }
 
 main {
     width: 100%;
-    max-width: 850px;
-    margin: 60px auto;
-    padding: 40px 60px;
-    background-color: #fff;
+    max-width: 900px;
+    margin: 64px auto;
+    padding: 48px 80px;
+    background-color: transparent;
     min-height: 60vh;
     flex: 1;
 }
 
 section {
-    margin-bottom: 40px;
+    margin-bottom: 48px;
 }
 
 section p {
-    line-height: 1.7;
-    margin-bottom: 1em;
+    line-height: 1.75;
+    margin-bottom: 1.25em;
+    max-width: 65ch;
+    font-size: 1.05em;
 }
 
 a {
-    color: #1a1a1a;
+    color: #2d2d2d;
     text-decoration: none;
-    border-bottom: 1px solid #e0e0e0;
-    transition: border-color 0.2s ease;
+    border-bottom: 1px solid #d4d4d4;
+    transition: all 0.2s ease;
 }
 
 a:hover {
-    border-bottom-color: #1a1a1a;
+    border-bottom-color: #5B6F8C;
+    color: #5B6F8C;
+}
+
+/* Beautiful focus states for accessibility */
+a:focus,
+button:focus,
+nav a:focus {
+    outline: 2px solid #5B6F8C;
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+nav a:focus:not(:focus-visible) {
+    outline: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+nav a:focus-visible {
+    outline: 2px solid #5B6F8C;
+    outline-offset: 3px;
+    border-radius: 2px;
 }
 
 h1, h2 {
-    color: #1a1a1a;
-    font-weight: 600;
-    letter-spacing: -0.01em;
+    color: #2d2d2d;
+    font-weight: 500;
+    letter-spacing: -0.02em;
 }
 
 h1 {
-    font-size: 2.2em;
+    font-size: 2.369em;
     margin-bottom: 0.5em;
+    line-height: 1.2;
 }
 
 h2 {
-    font-size: 1.8em;
-    margin-bottom: 1em;
+    font-size: 1.777em;
+    margin-bottom: 1.2em;
     margin-top: 0;
+    line-height: 1.3;
 }
 
 footer {
     text-align: center;
-    padding: 2em 0;
-    background-color: #fff;
-    border-top: 1px solid #f0f0f0;
+    padding: 3em 0;
+    background-color: transparent;
+    border-top: 1px solid #e8e8e8;
     margin-top: auto;
     font-size: 0.9em;
     color: #666;
@@ -128,10 +215,11 @@ footer a {
     color: #666;
     text-decoration: none;
     transition: color 0.2s ease;
+    border-bottom: none;
 }
 
 footer a:hover {
-    color: #1a1a1a;
+    color: #5B6F8C;
 }
 
 /* Basic styling for publication list */
@@ -141,13 +229,24 @@ footer a:hover {
 }
 
 .publications-list li {
-    margin-bottom: 32px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 24px;
+    padding: 24px;
+    padding-left: 28px;
+    border-left: 3px solid transparent;
+    border-radius: 4px;
+    transition: all 0.25s ease;
+    background-color: #fff;
+}
+
+.publications-list li:hover {
+    border-left-color: #5B6F8C;
+    background-color: #f8f9fa;
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .publications-list li:last-child {
-    border-bottom: none;
+    margin-bottom: 0;
 }
 
 .publications-list p {
@@ -155,61 +254,87 @@ footer a:hover {
 }
 
 .publications-list .title {
-    font-weight: 600;
-    font-size: 1.05em;
+    font-weight: 500;
+    font-size: 1.1em;
     line-height: 1.5;
+    margin-bottom: 8px;
 }
 
 .publications-list .authors {
     font-size: 0.95em;
-    color: #666;
+    color: #5a5a5a;
     line-height: 1.6;
+    margin-top: 8px;
 }
 
 .publications-list .details {
     font-size: 0.9em;
+    color: #888;
+    margin-top: 6px;
+}
+
+.publications-list .details em {
     color: #999;
     font-style: italic;
 }
 
 /* Style for publication title links */
 .publications-list .title a {
-    color: #1a1a1a;
+    color: #2d2d2d;
     text-decoration: none;
     transition: color 0.2s ease;
+    border-bottom: none;
 }
 
 .publications-list .title a:hover {
-    color: #666;
+    color: #5B6F8C;
 }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
     .site-title {
-        font-size: 2em;
-        margin-bottom: 20px;
+        font-size: 1.9em;
+        margin-bottom: 24px;
     }
 
     header {
-        padding: 30px 0 20px 0;
+        padding: 32px 0 24px 0;
     }
 
     main {
-        margin: 30px auto;
-        padding: 30px 20px;
+        margin: 32px auto;
+        padding: 32px 24px;
         max-width: 100%;
     }
 
     nav ul li {
-        margin-right: 20px;
+        margin-right: 24px;
         font-size: 0.95em;
     }
 
     h1 {
-        font-size: 1.8em;
+        font-size: 1.9em;
     }
 
     h2 {
         font-size: 1.5em;
+    }
+
+    section p {
+        font-size: 1em;
+        max-width: 100%;
+    }
+
+    .publications-list li {
+        padding: 20px;
+        padding-left: 24px;
+    }
+
+    .publications-list li:hover {
+        transform: translateX(2px);
     }
 } 
