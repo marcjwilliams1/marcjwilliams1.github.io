@@ -3,15 +3,20 @@
     box-sizing: border-box;
 }
 
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
 /* Custom selection color */
 ::selection {
-    background-color: #5B6F8C;
-    color: #fff;
+    background-color: rgba(91, 111, 140, 0.2);
+    color: inherit;
 }
 
 ::-moz-selection {
-    background-color: #5B6F8C;
-    color: #fff;
+    background-color: rgba(91, 111, 140, 0.2);
+    color: inherit;
 }
 
 body {
@@ -19,13 +24,13 @@ body {
     line-height: 1.7;
     margin: 0;
     padding: 0;
-    background-color: #fafafa;
-    color: #2d2d2d;
+    background-color: #fefefe;
+    color: #1f1f1f;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     font-size: 17px;
-    font-weight: 300;
+    font-weight: 350;
 }
 
 /* Smooth fade-in on page load */
@@ -46,17 +51,17 @@ main {
 
 .site-title {
     font-size: 2.369em;
-    font-weight: 500;
-    color: #2d2d2d;
+    font-weight: 600;
+    color: #1a1a1a;
     margin-bottom: 32px;
     text-align: center;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.03em;
 }
 
 header {
-    background-color: transparent;
-    padding: 48px 0 40px 0;
-    border-bottom: 1px solid #e8e8e8;
+    padding: 56px 0 48px 0;
+    border-bottom: none;
+    background: linear-gradient(to bottom, #fff 0%, #fefefe 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,7 +84,7 @@ nav ul {
 
 nav ul li {
     display: inline;
-    margin-right: 32px;
+    margin-right: 40px;
 }
 
 nav ul li:last-child {
@@ -88,8 +93,10 @@ nav ul li:last-child {
 
 nav a {
     text-decoration: none;
-    color: #666;
+    color: #6b7280;
     font-weight: 400;
+    font-size: 0.95em;
+    letter-spacing: 0.01em;
     transition: color 0.2s ease;
     position: relative;
     padding-bottom: 4px;
@@ -98,16 +105,16 @@ nav a {
 nav a::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -2px;
     left: 50%;
     width: 0;
-    height: 1px;
+    height: 2px;
     background-color: #5B6F8C;
     transition: width 0.3s ease, left 0.3s ease;
 }
 
 nav a:hover {
-    color: #2d2d2d;
+    color: #1f1f1f;
 }
 
 nav a:hover::after {
@@ -116,7 +123,7 @@ nav a:hover::after {
 }
 
 nav a.active {
-    color: #2d2d2d;
+    color: #1f1f1f;
     font-weight: 500;
 }
 
@@ -128,9 +135,9 @@ nav a.active::after {
 
 main {
     width: 100%;
-    max-width: 900px;
-    margin: 64px auto;
-    padding: 48px 80px;
+    max-width: 720px;
+    margin: 80px auto;
+    padding: 0 80px;
     background-color: transparent;
     min-height: 60vh;
     flex: 1;
@@ -141,22 +148,23 @@ section {
 }
 
 section p {
-    line-height: 1.75;
+    line-height: 1.8;
     margin-bottom: 1.25em;
-    max-width: 65ch;
+    max-width: 60ch;
     font-size: 1.05em;
+    color: #374151;
 }
 
 a {
-    color: #2d2d2d;
+    color: #1f1f1f;
     text-decoration: none;
-    border-bottom: 1px solid #d4d4d4;
-    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(91, 111, 140, 0.3);
+    transition: all 0.25s ease;
 }
 
 a:hover {
     border-bottom-color: #5B6F8C;
-    color: #5B6F8C;
+    color: #4a5d75;
 }
 
 /* Beautiful focus states for accessibility */
@@ -183,9 +191,9 @@ nav a:focus-visible {
 }
 
 h1, h2 {
-    color: #2d2d2d;
-    font-weight: 500;
-    letter-spacing: -0.02em;
+    color: #1a1a1a;
+    font-weight: 600;
+    letter-spacing: -0.025em;
 }
 
 h1 {
@@ -195,7 +203,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1.777em;
+    font-size: 1.5em;
     margin-bottom: 1.2em;
     margin-top: 0;
     line-height: 1.3;
@@ -203,23 +211,24 @@ h2 {
 
 footer {
     text-align: center;
-    padding: 3em 0;
+    padding: 4em 0;
     background-color: transparent;
-    border-top: 1px solid #e8e8e8;
+    border-top: none;
     margin-top: auto;
-    font-size: 0.9em;
-    color: #666;
+    font-size: 0.875em;
+    color: #9ca3af;
 }
 
 footer a {
-    color: #666;
+    color: #6b7280;
     text-decoration: none;
+    font-weight: 400;
     transition: color 0.2s ease;
     border-bottom: none;
 }
 
 footer a:hover {
-    color: #5B6F8C;
+    color: #4a5d75;
 }
 
 /* Basic styling for publication list */
@@ -229,20 +238,20 @@ footer a:hover {
 }
 
 .publications-list li {
-    margin-bottom: 24px;
-    padding: 24px;
-    padding-left: 28px;
-    border-left: 3px solid transparent;
-    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 28px 32px;
+    border-left: 2px solid #e5e7eb;
+    border-radius: 8px;
     transition: all 0.25s ease;
     background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .publications-list li:hover {
     border-left-color: #5B6F8C;
-    background-color: #f8f9fa;
-    transform: translateX(4px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    background-color: #fff;
+    transform: translateX(2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .publications-list li:last-child {
@@ -254,8 +263,8 @@ footer a:hover {
 }
 
 .publications-list .title {
-    font-weight: 500;
-    font-size: 1.1em;
+    font-weight: 550;
+    font-size: 1.05em;
     line-height: 1.5;
     margin-bottom: 8px;
 }
@@ -280,14 +289,14 @@ footer a:hover {
 
 /* Style for publication title links */
 .publications-list .title a {
-    color: #2d2d2d;
+    color: #1f1f1f;
     text-decoration: none;
     transition: color 0.2s ease;
     border-bottom: none;
 }
 
 .publications-list .title a:hover {
-    color: #5B6F8C;
+    color: #4a5d75;
 }
 
 /* Mobile responsiveness */
@@ -303,17 +312,18 @@ footer a:hover {
 
     header {
         padding: 32px 0 24px 0;
+        background: #fff;
     }
 
     main {
-        margin: 32px auto;
-        padding: 32px 24px;
+        margin: 40px auto;
+        padding: 0 24px;
         max-width: 100%;
     }
 
     nav ul li {
         margin-right: 24px;
-        font-size: 0.95em;
+        font-size: 0.9em;
     }
 
     h1 {
@@ -321,7 +331,7 @@ footer a:hover {
     }
 
     h2 {
-        font-size: 1.5em;
+        font-size: 1.35em;
     }
 
     section p {
@@ -330,11 +340,15 @@ footer a:hover {
     }
 
     .publications-list li {
-        padding: 20px;
-        padding-left: 24px;
+        padding: 20px 24px;
+        border-radius: 6px;
     }
 
     .publications-list li:hover {
         transform: translateX(2px);
+    }
+
+    footer {
+        padding: 3em 0;
     }
 } 
