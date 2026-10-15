@@ -2,66 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Marc J. Williams</title>
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VPB516E512"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-VPB516E512');
-    </script>
+    <title>Marc J. Williams</title>
+    <!-- This page now lives on the home page; kept so old links still work. -->
+    <meta http-equiv="refresh" content="0; url=index.html#elsewhere">
+    <link rel="canonical" href="https://marcjwilliams1.github.io/">
+    <meta name="robots" content="noindex">
 </head>
 <body>
-    <header>
-        <div class="site-title">Marc J. Williams</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="software.html">Software</a></li>
-                <li><a href="cv.html">CV</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <p>You can reach me by email at:</p>
-            <p><span id="email-link-placeholder"><em>Email address hidden to prevent spam (requires JavaScript).</em></span></p>
-        </section>
-    </main>
-    <footer>
-        <p>
-            <a href="https://www.linkedin.com/in/marc-williams-b40a92198/" target="_blank">LinkedIn</a> |
-            <a href="https://x.com/marcjwills_" target="_blank">X (Twitter)</a> |
-            <a href="https://bsky.app/profile/marcjwilliams.bsky.social" target="_blank">BlueSky</a>
-        </p>
-    </footer>
-    <script>
-        (function() {
-            var user = 'william1';
-            var domain = 'mskcc.org';
-            var emailAddress = user + '@' + domain;
-            var mailtoLink = 'mailto:' + emailAddress;
-            
-            var linkElement = document.createElement('a');
-            linkElement.setAttribute('href', mailtoLink);
-            linkElement.textContent = emailAddress;
-            
-            var placeholder = document.getElementById('email-link-placeholder');
-            if (placeholder && placeholder.parentNode) { // Ensure placeholder and its parent exist
-                placeholder.parentNode.replaceChild(linkElement, placeholder);
-            } else {
-                // Fallback if placeholder or its parent not found
-                console.error('Email placeholder or its parent could not be found.');
-            }
-        })();
-    </script>
+    <p>This page has moved to <a href="index.html#elsewhere">the home page</a>.</p>
 </body>
-</html> 
+</html>

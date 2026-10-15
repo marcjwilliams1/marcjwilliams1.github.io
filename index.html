@@ -1,9 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marc J. Williams</title>
+    <meta name="description" content="Marc J. Williams is a computational biologist studying somatic evolution, combining mathematics and genomics to understand how cells change over our lifetimes and how cancer evolves.">
+    <meta property="og:title" content="Marc J. Williams">
+    <meta property="og:description" content="Computational biologist studying somatic evolution and cancer.">
+    <meta property="og:url" content="https://marcjwilliams1.github.io/">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://marcjwilliams1.github.io/">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <script>document.documentElement.className = 'js';</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300..700;1,7..72,300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
     <!-- Google tag (gtag.js) -->
@@ -17,31 +29,84 @@
     </script>
 </head>
 <body>
-    <header>
-        <div class="site-title">Marc J. Williams</div>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="software.html">Software</a></li>
-                <li><a href="cv.html">CV</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="home">
-            <p>I'm a computational biologist interested in somatic evolution, the process by which the cells in our bodies change and accumulate mutations over our lifetimes. This process underlies cancer, but it's also happening in healthy tissues all the time. My work combines mathematics and genomics to understand this evolutionary process, with the goal of improving how we track and treat cancer.</p>
-            <p>I'm currently a research scientist in Sohrab Shah's lab at Memorial Sloan Kettering Cancer Center in New York. Before that, I completed my PhD with Trevor Graham at Barts Cancer Institute in London.</p>
-            <p>In January 2027, I will be starting a research group in Bangor University supported by a Royal Society University Research Fellowship.</p>
-        </section>
-    </main>
-    <footer>
-        <p>
-            <a href="https://www.linkedin.com/in/marc-williams-b40a92198/" target="_blank">LinkedIn</a> |
-            <a href="https://x.com/marcjwills_" target="_blank">X (Twitter)</a> |
-            <a href="https://bsky.app/profile/marcjwilliams.bsky.social" target="_blank">BlueSky</a>
-        </p>
-    </footer>
+    <div class="page">
+        <div class="plot">
+            <svg id="muller" role="img" aria-label="Muller plot of simulated clonal evolution: nested clones emerge and expand over time"></svg>
+            <p class="caption">Simulated clonal evolution<button type="button" id="rerun">Run again</button></p>
+        </div>
+
+        <main>
+            <div class="columns">
+                <div class="intro">
+                    <h1>Marc J. Williams</h1>
+
+                    <div class="bio">
+                        <p>I'm a computational biologist interested in somatic evolution, the process by which the cells in our bodies change and accumulate mutations over our lifetimes. This process underlies cancer, but it's also happening in healthy tissues all the time. My work combines mathematics and genomics to understand this evolutionary process, with the goal of improving how we track and treat cancer.</p>
+                        <p>I'm currently a research scientist in Sohrab Shah's lab at Memorial Sloan Kettering Cancer Center in New York. Before that, I completed my PhD with Trevor Graham at Barts Cancer Institute in London.</p>
+                        <p>In January 2027, I will be starting a research group at Bangor University supported by a Royal Society University Research Fellowship.</p>
+                    </div>
+
+                    <section class="elsewhere">
+                        <h2 id="elsewhere">Elsewhere</h2>
+                        <ul class="links">
+                            <li><a href="Marc Williams CV.pdf">CV (PDF)</a></li>
+                            <li><a href="https://github.com/marcjwilliams1" target="_blank" rel="noopener">Software on GitHub</a></li>
+                            <li><span class="email" data-user="william1" data-domain="mskcc.org">Email (requires JavaScript)</span></li>
+                            <li><a href="https://bsky.app/profile/marcjwilliams.bsky.social" target="_blank" rel="noopener">Bluesky</a></li>
+                            <li><a href="https://x.com/marcjwills_" target="_blank" rel="noopener">X</a></li>
+                            <li><a href="https://www.linkedin.com/in/marc-williams-b40a92198/" target="_blank" rel="noopener">LinkedIn</a></li>
+                        </ul>
+                    </section>
+                </div>
+
+                <section class="papers-block">
+                    <h2 id="papers">Selected papers</h2>
+                    <ul class="papers">
+                        <li>
+                            <span class="year">2025</span>
+                            <span><a href="https://www.nature.com/articles/s41586-025-09580-0" target="_blank" rel="noopener">Tracking clonal evolution during treatment in ovarian cancer using cell-free DNA</a><span class="venue">Nature</span></span>
+                        </li>
+                        <li>
+                            <span class="year">2024</span>
+                            <span><a href="https://www.nature.com/articles/s41588-024-01988-0" target="_blank" rel="noopener">Luminal breast epithelial cells of BRCA1 or BRCA2 mutation carriers and noncarriers harbor common breast cancer copy number alterations</a><span class="venue">Nature Genetics</span></span>
+                        </li>
+                        <li>
+                            <span class="year">2022</span>
+                            <span><a href="https://www.nature.com/articles/s41586-022-05249-0" target="_blank" rel="noopener">Single-cell genomic variation induced by mutational processes in cancer</a><span class="venue">Nature</span></span>
+                        </li>
+                        <li>
+                            <span class="year">2020</span>
+                            <span><a href="https://elifesciences.org/articles/48714" target="_blank" rel="noopener">Measuring the distribution of fitness effects in somatic evolution by combining clonal dynamics with dN/dS ratios</a><span class="venue">eLife</span></span>
+                        </li>
+                        <li>
+                            <span class="year">2019</span>
+                            <span><a href="https://www.annualreviews.org/content/journals/10.1146/annurev-genom-083117-021712" target="_blank" rel="noopener">Measuring clonal evolution in cancer with genomics</a><span class="venue">Annual Review of Genomics and Human Genetics</span></span>
+                        </li>
+                        <li>
+                            <span class="year">2018</span>
+                            <span><a href="https://www.nature.com/articles/s41588-018-0128-6" target="_blank" rel="noopener">Quantification of subclonal selection in cancer from bulk sequencing data</a><span class="venue">Nature Genetics</span></span>
+                        </li>
+                        <li>
+                            <span class="year">2016</span>
+                            <span><a href="https://www.nature.com/articles/ng.3489" target="_blank" rel="noopener">Identification of neutral tumor evolution across cancer types</a><span class="venue">Nature Genetics</span></span>
+                        </li>
+                    </ul>
+                    <p class="more">Mostly first-author work. The full list is on <a href="https://scholar.google.co.uk/citations?user=yS47gHMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Email is assembled client-side to keep it away from spam harvesters.
+        // To change it, edit data-user and data-domain above.
+        document.querySelectorAll('.email').forEach(function (el) {
+            var a = document.createElement('a');
+            a.href = 'mailto:' + el.dataset.user + '@' + el.dataset.domain;
+            a.textContent = 'Email';
+            el.replaceWith(a);
+        });
+    </script>
+    <script src="clonal.js"></script>
 </body>
-</html> 
+</html>

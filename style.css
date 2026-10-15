@@ -1,354 +1,267 @@
-/* Global box-sizing */
-* {
-    box-sizing: border-box;
+/*
+  One memorable thing: a Muller (fish) plot of clonal evolution, simulated
+  fresh on every page load (see clonal.js), coloured from the H&E stain
+  spectrum, eosin pinks through haematoxylin violets. Everything else stays
+  quiet: one serif, left-aligned text in the same frame as the plot.
+*/
+
+:root {
+    --paper: #FDFCFD;
+    --ink: #241F35;
+    --muted: #6A6478;
+    --rule: #E9E4EC;
+    --link: #5A4596;
+    --focus: #7E52A3;
+
+    --page: 80rem;
+    --measure: 36rem;
+    --gutter: clamp(1.25rem, 6vw, 5rem);
+    --end-space: clamp(3rem, 8vh, 5rem);   /* space below the last line */
+    --name-size: clamp(2.5rem, 6vw, 3.75rem);
 }
 
-/* Smooth scrolling */
+* { box-sizing: border-box; }
+
 html {
+    -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
 }
 
-/* Custom selection color */
-::selection {
-    background-color: rgba(91, 111, 140, 0.2);
-    color: inherit;
-}
-
-::-moz-selection {
-    background-color: rgba(91, 111, 140, 0.2);
-    color: inherit;
-}
-
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    line-height: 1.7;
     margin: 0;
-    padding: 0;
-    background-color: #fefefe;
-    color: #1f1f1f;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    font-size: 17px;
-    font-weight: 350;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Literata", Georgia, serif;
+    font-optical-sizing: auto;
+    font-size: 1.125rem;
+    line-height: 1.65;
+    font-weight: 380;
 }
 
-/* Smooth fade-in on page load */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-main {
-    animation: fadeIn 0.6s ease-out;
-}
-
-.site-title {
-    font-size: 2.369em;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 32px;
-    text-align: center;
-    letter-spacing: -0.03em;
-}
-
-header {
-    padding: 56px 0 48px 0;
-    border-bottom: none;
-    background: linear-gradient(to bottom, #fff 0%, #fefefe 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Reduce top margin for content pages (non-home) */
-#research,
-#software,
-#cv,
-#contact {
-    margin-top: -48px;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: inline-block; /* Allow centering of the ul */
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 40px;
-}
-
-nav ul li:last-child {
-    margin-right: 0;
-}
-
-nav a {
-    text-decoration: none;
-    color: #6b7280;
-    font-weight: 400;
-    font-size: 0.95em;
-    letter-spacing: 0.01em;
-    transition: color 0.2s ease;
-    position: relative;
-    padding-bottom: 4px;
-}
-
-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background-color: #5B6F8C;
-    transition: width 0.3s ease, left 0.3s ease;
-}
-
-nav a:hover {
-    color: #1f1f1f;
-}
-
-nav a:hover::after {
-    width: 100%;
-    left: 0;
-}
-
-nav a.active {
-    color: #1f1f1f;
-    font-weight: 500;
-}
-
-nav a.active::after {
-    width: 100%;
-    left: 0;
-    background-color: #5B6F8C;
-}
-
-main {
-    width: 100%;
-    max-width: 720px;
-    margin: 80px auto;
-    padding: 0 80px;
-    background-color: transparent;
-    min-height: 60vh;
-    flex: 1;
-}
-
-section {
-    margin-bottom: 48px;
-}
-
-section p {
-    line-height: 1.8;
-    margin-bottom: 1.25em;
-    max-width: 60ch;
-    font-size: 1.05em;
-    color: #374151;
-}
+::selection { background: #EFB3C9; }
 
 a {
-    color: #1f1f1f;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(91, 111, 140, 0.3);
-    transition: all 0.25s ease;
+    color: var(--link);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    text-decoration-color: color-mix(in srgb, var(--link) 35%, transparent);
 }
 
-a:hover {
-    border-bottom-color: #5B6F8C;
-    color: #4a5d75;
-}
-
-/* Beautiful focus states for accessibility */
-a:focus,
-button:focus,
-nav a:focus {
-    outline: 2px solid #5B6F8C;
-    outline-offset: 3px;
-    border-radius: 2px;
-}
-
-a:focus:not(:focus-visible),
-button:focus:not(:focus-visible),
-nav a:focus:not(:focus-visible) {
-    outline: none;
-}
+a:hover { text-decoration-color: var(--link); }
 
 a:focus-visible,
-button:focus-visible,
-nav a:focus-visible {
-    outline: 2px solid #5B6F8C;
+button:focus-visible {
+    outline: 2px solid var(--focus);
     outline-offset: 3px;
     border-radius: 2px;
 }
 
-h1, h2 {
-    color: #1a1a1a;
-    font-weight: 600;
-    letter-spacing: -0.025em;
+/* Plot and text share one centred frame. */
+.page {
+    max-width: var(--page);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+}
+
+/* ---------- Plot ---------- */
+
+.plot {
+    margin-top: clamp(1.5rem, 5vh, 3rem);
+}
+
+/* The plot is drawn by JavaScript; without it, start straight at the name. */
+.no-js .plot { display: none; }
+
+#muller {
+    display: block;
+    width: 100%;
+    height: clamp(170px, 28vh, 270px);
+}
+
+.plot.reveal #muller {
+    animation: grow 2.2s cubic-bezier(.3, .7, .2, 1) both;
+}
+
+@keyframes grow {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0 0 0); }
+}
+
+.caption {
+    margin: 0.5rem 0 0;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: var(--muted);
+    text-align: right;
+}
+
+.caption button {
+    margin-left: 0.75em;
+    padding: 0 0.15em;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: var(--link);
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    text-decoration-color: color-mix(in srgb, var(--link) 35%, transparent);
+}
+
+.caption button:hover { text-decoration-color: var(--link); }
+
+/* ---------- Text ---------- */
+
+main {
+    margin-top: clamp(1.75rem, 5vh, 3rem);
+    padding-bottom: var(--end-space);
 }
 
 h1 {
-    font-size: 2.369em;
-    margin-bottom: 0.5em;
-    line-height: 1.2;
+    margin: 0 0 1.25rem;
+    font-size: var(--name-size);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
 }
+
+.bio,
+.elsewhere { max-width: var(--measure); }
+
+.bio p { margin: 0 0 1em; }
+.bio p:last-child { margin-bottom: 0; }
 
 h2 {
-    font-size: 1.5em;
-    margin-bottom: 1.2em;
-    margin-top: 0;
-    line-height: 1.3;
+    margin: 3rem 0 1rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    scroll-margin-top: 2rem;
 }
 
-footer {
-    text-align: center;
-    padding: 4em 0;
-    background-color: transparent;
-    border-top: none;
-    margin-top: auto;
-    font-size: 0.875em;
-    color: #9ca3af;
-}
+/* ---------- Papers ---------- */
 
-footer a {
-    color: #6b7280;
-    text-decoration: none;
-    font-weight: 400;
-    transition: color 0.2s ease;
-    border-bottom: none;
-}
-
-footer a:hover {
-    color: #4a5d75;
-}
-
-/* Basic styling for publication list */
-.publications-list {
+.papers {
     list-style: none;
+    margin: 0;
     padding: 0;
 }
 
-.publications-list li {
-    margin-bottom: 20px;
-    padding: 28px 32px;
-    border-left: 2px solid #e5e7eb;
-    border-radius: 8px;
-    transition: all 0.25s ease;
-    background-color: #fff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+.papers li {
+    display: grid;
+    grid-template-columns: 3.25rem 1fr;
+    gap: 0 1rem;
+    padding: 0.8rem 0;
+    border-top: 1px solid var(--rule);
 }
 
-.publications-list li:hover {
-    border-left-color: #5B6F8C;
-    background-color: #fff;
-    transform: translateX(2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+.papers .year {
+    padding-top: 0.12em;
+    font-size: 0.9375rem;
+    font-variant-numeric: oldstyle-nums;
+    color: var(--muted);
 }
 
-.publications-list li:last-child {
-    margin-bottom: 0;
+.papers a {
+    line-height: 1.4;
+    color: var(--ink);
+    text-decoration-color: transparent;
 }
 
-.publications-list p {
-    margin: 6px 0;
+.papers a:hover {
+    color: var(--link);
+    text-decoration-color: var(--link);
 }
 
-.publications-list .title {
-    font-weight: 550;
-    font-size: 1.05em;
-    line-height: 1.5;
-    margin-bottom: 8px;
-}
-
-.publications-list .authors {
-    font-size: 0.95em;
-    color: #5a5a5a;
-    line-height: 1.6;
-    margin-top: 8px;
-}
-
-.publications-list .details {
-    font-size: 0.9em;
-    color: #888;
-    margin-top: 6px;
-}
-
-.publications-list .details em {
-    color: #999;
+.papers .venue {
+    display: block;
+    margin-top: 0.15rem;
+    font-size: 0.9375rem;
     font-style: italic;
+    color: var(--muted);
 }
 
-/* Style for publication title links */
-.publications-list .title a {
-    color: #1f1f1f;
-    text-decoration: none;
-    transition: color 0.2s ease;
-    border-bottom: none;
+.more {
+    margin: 1rem 0 0;
+    font-size: 0.9375rem;
+    color: var(--muted);
 }
 
-.publications-list .title a:hover {
-    color: #4a5d75;
+/* ---------- Links ---------- */
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-    body {
-        font-size: 16px;
+/* ---------- One column: bio, papers, then links ---------- */
+
+/* The links share a wrapper (.intro) with the bio for the wide layout;
+   display: contents lifts them out so they can follow the papers here. */
+@media (max-width: 999px) {
+    .columns {
+        display: flex;
+        flex-direction: column;
     }
 
-    .site-title {
-        font-size: 1.9em;
-        margin-bottom: 24px;
+    .intro { display: contents; }
+    .elsewhere { order: 1; }
+}
+
+/* ---------- Wide screens: papers beside the bio ---------- */
+
+@media (min-width: 1000px) {
+    /* Left: name, bio, links. Right: papers. */
+    .columns {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+        column-gap: clamp(3rem, 5vw, 5rem);
+        align-items: start;
     }
 
-    header {
-        padding: 32px 0 24px 0;
-        background: #fff;
-    }
+    h1 { white-space: nowrap; }
 
-    main {
-        margin: 40px auto;
-        padding: 0 24px;
-        max-width: 100%;
-    }
+    /* Line the papers heading up with the first line of the bio, i.e. drop
+       it by the height of the one-line name plus its margin. */
+    .papers-block { padding-top: calc(var(--name-size) * 1.05 + 1.25rem); }
+    .papers-block h2 { margin-top: 0; }
+}
 
-    nav ul li {
-        margin-right: 24px;
-        font-size: 0.9em;
+/* The left column (name, bio, links) stays on screen beside the papers. It
+   starts level with them, holds still once its bottom reaches the edge of the
+   screen, and lands level with the end of the papers at the bottom of the
+   page; the bottom offset matches main's padding-bottom, which is what makes
+   the last lines meet. If the window is too short for the whole column, the
+   top offset wins and keeps the name in view. On very tall screens the page
+   barely scrolls and bottom-alignment would open a gap above the name, so
+   skip it. */
+@media (min-width: 1000px) and (max-height: 1100px) {
+    .intro {
+        align-self: end;
+        position: sticky;
+        top: 1.5rem;
+        bottom: var(--end-space);
     }
+}
 
-    h1 {
-        font-size: 1.9em;
-    }
+/* ---------- Small screens ---------- */
 
-    h2 {
-        font-size: 1.35em;
-    }
+@media (max-width: 600px) {
+    body { font-size: 1.0625rem; }
 
-    section p {
-        font-size: 1em;
-        max-width: 100%;
-    }
+    .caption { text-align: left; }
+    .caption button { margin-left: 0.4em; }
 
-    .publications-list li {
-        padding: 20px 24px;
-        border-radius: 6px;
-    }
+    .papers li { grid-template-columns: 1fr; }
+    .papers .year { padding: 0 0 0.15rem; }
+}
 
-    .publications-list li:hover {
-        transform: translateX(2px);
-    }
-
-    footer {
-        padding: 3em 0;
-    }
-} 
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .plot.reveal #muller { animation: none; }
+}
